@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { StudentListComponent } from './student/student-list/student-list.component';
 import {FormsModule} from '@angular/forms';
 import { SearchStudentComponent } from './student/search-student/search-student.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule, MatTableModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -13,11 +15,14 @@ import { SearchStudentComponent } from './student/search-student/search-student.
     StudentListComponent,
     SearchStudentComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatButtonModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
