@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StudentListComponent } from './student/student-list/student-list.component';
 import {FormsModule} from '@angular/forms';
+import { SearchStudentComponent } from './student/search-student/search-student.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StudentListComponent
+    StudentListComponent,
+    SearchStudentComponent
   ],
     imports: [
         BrowserModule,

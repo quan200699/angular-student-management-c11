@@ -51,4 +51,14 @@ export class StudentListComponent implements OnInit {
     this.listStudent[this.currentIndex] = this.studentUpdate;
     this.studentUpdate = {};
   }
+
+  findStudentByName(value) {
+    let students = [];
+    for (let i = 0; i < this.listStudent.length; i++) {
+      if (this.listStudent[i].fullName.includes(value)) {
+        students.push(this.listStudent[i]);
+      }
+    }
+    this.listStudent = students;
+  }
 }
