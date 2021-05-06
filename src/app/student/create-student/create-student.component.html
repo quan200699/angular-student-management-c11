@@ -3,7 +3,13 @@
   <table>
     <tr>
       <td>Id:</td>
-      <td><input [(ngModel)]="student.id" name="id" type="number"></td>
+      <td><input #id="ngModel" [(ngModel)]="student.id"
+                 name="id" required
+                 type="number"></td>
+<!--      touched: khi người dùng nhấp vào form control và form control này chưa được điền thông tin
+thì sẽ thông báo lỗi
+-->
+      <td *ngIf="id.touched && id?.errors?.required">Trường này bắt buộc phải điền</td>
     </tr>
     <tr>
       <td>Name:</td>
