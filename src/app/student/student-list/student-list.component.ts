@@ -8,11 +8,7 @@ import {Student} from '../../model/student';
 })
 export class StudentListComponent implements OnInit {
   listStudent: Student[] = [];
-  student: Student = {
-    classes: ''
-  };
   studentUpdate: Student = {};
-  isShowCreateForm = false;
   isShowUpdateForm = false;
   currentIndex = -1;
   listClass: string[] = ['C02H1', 'C11G1'];
@@ -21,15 +17,6 @@ export class StudentListComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  addNewStudent() {
-    this.listStudent.push(this.student);
-    this.student = {};
-  }
-
-  openForm() {
-    this.isShowCreateForm = !this.isShowCreateForm;
   }
 
   removeStudent(i: number) {
@@ -60,5 +47,9 @@ export class StudentListComponent implements OnInit {
       }
     }
     this.listStudent = students;
+  }
+
+  addNewStudentToList(event) {
+    this.listStudent.push(event)
   }
 }

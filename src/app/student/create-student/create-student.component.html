@@ -1,0 +1,25 @@
+<form #studentForm="ngForm" (ngSubmit)="addNewStudent(studentForm)">
+  <h1>Show Create Form</h1>
+  <table>
+    <tr>
+      <td>Id:</td>
+      <td><input [(ngModel)]="student.id" name="id" type="number"></td>
+    </tr>
+    <tr>
+      <td>Name:</td>
+      <td><input [(ngModel)]="student.fullName" name="fullName" type="text"></td>
+    </tr>
+    <tr>
+      <td>Address:</td>
+      <td><input [(ngModel)]="student.address" name="address" type="text"></td>
+    </tr>
+    <tr>
+      <td>Mark:</td>
+      <td><input [(ngModel)]="student.mark" name="mark" type="number"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><input type="submit" value="Create"></td>
+    </tr>
+  </table>
+</form>

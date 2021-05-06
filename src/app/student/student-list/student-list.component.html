@@ -20,41 +20,7 @@
     </tr>
   </ng-container>
 </table>
-<button mat-button color="primary" (click)="openForm()">Create new student</button>
-<ng-container *ngIf="isShowCreateForm">
-  <h1>Show Create Form</h1>
-  <table>
-    <tr>
-      <td>Id:</td>
-      <td><input [(ngModel)]="student.id" name="id" type="number"></td>
-    </tr>
-    <tr>
-      <td>Name:</td>
-      <td><input [(ngModel)]="student.fullName" name="fullName" type="text"></td>
-    </tr>
-    <tr>
-      <td>Address:</td>
-      <td><input [(ngModel)]="student.address" name="address" type="text"></td>
-    </tr>
-    <tr>
-      <td>Mark:</td>
-      <td><input [(ngModel)]="student.mark" name="mark" type="number"></td>
-    </tr>
-    <tr>
-      <td>Class:</td>
-      <td>
-        <select name="classes" [(ngModel)]="student.classes">
-          <option ngValue="">Choose class</option>
-          <option *ngFor="let classes of listClass">{{classes}}</option>
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><input (click)="addNewStudent()" type="button" value="Create"></td>
-    </tr>
-  </table>
-</ng-container>
+<app-create-student (studentBinding)="addNewStudentToList($event)"></app-create-student>
 <ng-container *ngIf="isShowUpdateForm">
   <h1>Show Update Form</h1>
   <table>

@@ -8,12 +8,14 @@ import {FormsModule} from '@angular/forms';
 import { SearchStudentComponent } from './student/search-student/search-student.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule, MatTableModule} from '@angular/material';
+import { CreateStudentComponent } from './student/create-student/create-student.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StudentListComponent,
-    SearchStudentComponent
+    SearchStudentComponent,
+    CreateStudentComponent
   ],
   imports: [
     BrowserModule,
