@@ -4,6 +4,7 @@
     <tr>
       <td>Id:</td>
       <td><input type="number" formControlName="id"></td>
+      <td *ngIf="id?.errors?.required && id?.touched">Trường này phải được điền</td>
     </tr>
     <tr>
       <td>Name:</td>

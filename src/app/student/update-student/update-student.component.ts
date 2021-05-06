@@ -17,7 +17,12 @@ export class UpdateStudentComponent implements OnInit {
   @Output()
   newStudent = new EventEmitter<Student>();
   studentForm: FormGroup;
+
   constructor() {
+  }
+
+  get id() {
+    return this.studentForm.get('id');
   }
 
   ngOnInit() {
