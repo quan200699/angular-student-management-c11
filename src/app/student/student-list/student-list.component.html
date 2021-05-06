@@ -21,28 +21,4 @@
   </ng-container>
 </table>
 <app-create-student (studentBinding)="addNewStudentToList($event)"></app-create-student>
-<ng-container *ngIf="isShowUpdateForm">
-  <h1>Show Update Form</h1>
-  <table>
-    <tr>
-      <td>Id:</td>
-      <td><input [(ngModel)]="studentUpdate.id" name="id" type="number"></td>
-    </tr>
-    <tr>
-      <td>Name:</td>
-      <td><input [(ngModel)]="studentUpdate.fullName" name="fullName" type="text"></td>
-    </tr>
-    <tr>
-      <td>Address:</td>
-      <td><input [(ngModel)]="studentUpdate.address" name="address" type="text"></td>
-    </tr>
-    <tr>
-      <td>Mark:</td>
-      <td><input [(ngModel)]="studentUpdate.mark" name="mark" type="number"></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><input (click)="updateStudent(currentIndex)" type="button" value="Update"></td>
-    </tr>
-  </table>
-</ng-container>
+<app-update-student *ngIf="isShowed" [student]="listStudent[currentIndex]" (newStudent)="updateStudent($event)"></app-update-student>

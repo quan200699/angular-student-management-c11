@@ -8,10 +8,8 @@ import {Student} from '../../model/student';
 })
 export class StudentListComponent implements OnInit {
   listStudent: Student[] = [];
-  studentUpdate: Student = {};
-  isShowUpdateForm = false;
   currentIndex = -1;
-  listClass: string[] = ['C02H1', 'C11G1'];
+  isShowed = false;
 
   constructor() {
   }
@@ -24,19 +22,12 @@ export class StudentListComponent implements OnInit {
   }
 
   showUpdateForm(i: number) {
+    this.isShowed = !this.isShowed;
     this.currentIndex = i;
-    this.isShowUpdateForm = !this.isShowUpdateForm;
-    this.studentUpdate = {
-      id: this.listStudent[i].id,
-      fullName: this.listStudent[i].fullName,
-      mark: this.listStudent[i].mark,
-      address: this.listStudent[i].address
-    };
   }
 
-  updateStudent(index) {
-    this.listStudent[this.currentIndex] = this.studentUpdate;
-    this.studentUpdate = {};
+  updateStudent(event) {
+    this.listStudent[this.currentIndex] = event;
   }
 
   findStudentByName(value) {
