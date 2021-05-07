@@ -3,5 +3,5 @@ export interface Student {
   fullName?: string;
   address?: string;
   mark?: number;
-  classes?: string;
+  classes?: any;
 }

@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule, MatTableModule} from '@angular/material';
 import { CreateStudentComponent } from './student/create-student/create-student.component';
 import { UpdateStudentComponent } from './student/update-student/update-student.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { UpdateStudentComponent } from './student/update-student/update-student.
     BrowserAnimationsModule,
     MatTableModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

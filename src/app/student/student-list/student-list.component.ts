@@ -9,7 +9,6 @@ import {StudentService} from '../../service/student.service';
 })
 export class StudentListComponent implements OnInit {
   listStudent: Student[] = [];
-  currentIndex: number = -1;
 
   constructor(private studentService: StudentService) {
   }
@@ -19,11 +18,9 @@ export class StudentListComponent implements OnInit {
   }
 
   getAll() {
-    this.listStudent = this.studentService.getAllStudent();
-  }
-
-  removeStudent(i: number) {
-    this.listStudent.splice(i, 1);
+    this.studentService.getAllStudent().subscribe(students => {
+      this.listStudent = students;
+    });
   }
 
   findStudentByName(value) {

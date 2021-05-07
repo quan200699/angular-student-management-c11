@@ -1,8 +1,9 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Student} from '../../model/student';
-import { NgForm} from '@angular/forms';
+import {NgForm} from '@angular/forms';
 import {StudentService} from '../../service/student.service';
 import {ClassesService} from '../../service/classes.service';
+import {Classes} from '../../model/classes';
 
 @Component({
   selector: 'app-create-student',
@@ -14,7 +15,7 @@ export class CreateStudentComponent implements OnInit {
   student: Student = {
     classes: ''
   };
-  listClass: string[] = [];
+  listClass: Classes[] = [];
 
   constructor(private studentService: StudentService,
               private classesService: ClassesService) {
@@ -24,13 +25,22 @@ export class CreateStudentComponent implements OnInit {
     this.getAllClass();
   }
 
-  getAllClass(){
-    this.listClass = this.classesService.getAllClass();
+  getAllClass() {
+    this.classesService.getAllClasses().subscribe(classes => {
+      this.listClass = classes;
+    });
   }
 
   addNewStudent(form: NgForm) {
     let newStudent = form.value;
-    this.studentService.createNewStudent(newStudent);
-    this.student = {};
+    newStudent.classes = {
+      id: newStudent.classes
+    };
+    this.studentService.createNewStudent(newStudent).subscribe(() => {
+      console.log('Tao thanh cong');
+      this.student = {};
+    }, e => {
+      console.log(e);
+    });
   }
 }
