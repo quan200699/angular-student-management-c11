@@ -1,3 +1,4 @@
+<a routerLink="/students">Student list</a>
 <form #studentForm="ngForm" (ngSubmit)="addNewStudent(studentForm)">
   <h1>Show Create Form</h1>
   <table>
@@ -22,6 +23,14 @@ thì sẽ thông báo lỗi
     <tr>
       <td>Mark:</td>
       <td><input [(ngModel)]="student.mark" name="mark" type="number"></td>
+    </tr>
+    <tr>
+      <td>Classes:</td>
+      <td>
+        <select [(ngModel)]="student.classes" name="classes">
+          <option *ngFor="let classes of listClass" [value]="classes">{{classes}}</option>
+        </select>
+      </td>
     </tr>
     <tr>
       <td></td>

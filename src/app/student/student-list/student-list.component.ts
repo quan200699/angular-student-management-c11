@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Student} from '../../model/student';
+import {StudentService} from '../../service/student.service';
 
 @Component({
   selector: 'app-student-list',
@@ -8,26 +9,21 @@ import {Student} from '../../model/student';
 })
 export class StudentListComponent implements OnInit {
   listStudent: Student[] = [];
-  currentIndex = -1;
-  isShowed = false;
+  currentIndex: number = -1;
 
-  constructor() {
+  constructor(private studentService: StudentService) {
   }
 
   ngOnInit() {
+    this.getAll();
+  }
+
+  getAll() {
+    this.listStudent = this.studentService.getAllStudent();
   }
 
   removeStudent(i: number) {
     this.listStudent.splice(i, 1);
-  }
-
-  showUpdateForm(i: number) {
-    this.isShowed = !this.isShowed;
-    this.currentIndex = i;
-  }
-
-  updateStudent(event) {
-    this.listStudent[this.currentIndex] = event;
   }
 
   findStudentByName(value) {
@@ -38,9 +34,5 @@ export class StudentListComponent implements OnInit {
       }
     }
     this.listStudent = students;
-  }
-
-  addNewStudentToList(event) {
-    this.listStudent.push(event)
   }
 }

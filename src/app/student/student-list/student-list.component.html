@@ -15,10 +15,9 @@
       <td>{{student.fullName}}</td>
       <td>{{student.address}}</td>
       <td>{{student.mark}}</td>
-      <td><button (click)="showUpdateForm(i)">Update</button></td>
+      <td><a [routerLink]="['/students/edit',i]">Edit</a></td>
       <td><button (click)="removeStudent(i)">Delete</button></td>
     </tr>
   </ng-container>
 </table>
-<app-create-student (studentBinding)="addNewStudentToList($event)"></app-create-student>
-<app-update-student *ngIf="isShowed" [student]="listStudent[currentIndex]" (newStudent)="updateStudent($event)"></app-update-student>
+<a routerLink="/students/create">Create new student</a>

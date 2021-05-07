@@ -1,6 +1,8 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Student} from '../../model/student';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {StudentService} from '../../service/student.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-update-student',
@@ -8,17 +10,22 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./update-student.component.css']
 })
 export class UpdateStudentComponent implements OnInit {
-  //Khai báo một đối tượng student để
-  //nhận giá trị student cần chỉnh sửa
-  //từ component cha
-  @Input()
   student: Student = {};
-  //Gửi dữ liệu student mới sang cho cha
-  @Output()
-  newStudent = new EventEmitter<Student>();
   studentForm: FormGroup;
+  index = -1;
 
-  constructor() {
+  constructor(private studentService: StudentService,
+              private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.paramMap.subscribe(paramMap => {
+      this.index = +paramMap.get('id');
+      let student = this.getStudentByIndex(this.index);
+      this.studentForm = new FormGroup({
+        id: new FormControl(student.id, Validators.required),
+        fullName: new FormControl(student.fullName),
+        address: new FormControl(student.address),
+        mark: new FormControl(student.mark)
+      });
+    });
   }
 
   get id() {
@@ -26,16 +33,16 @@ export class UpdateStudentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.studentForm = new FormGroup({
-      id: new FormControl(this.student.id, Validators.required),
-      fullName: new FormControl(this.student.fullName),
-      address: new FormControl(this.student.address),
-      mark: new FormControl(this.student.mark)
-    });
+
   }
 
-  updateStudentInfo() {
-    this.newStudent.emit(this.studentForm.value);
-    this.studentForm.reset();
+  getStudentByIndex(index: number) {
+    let students = this.studentService.getAllStudent();
+    return students[index];
+  }
+
+  updateStudentInfo(index) {
+    let newStudent = this.studentForm.value;
+    this.studentService.updateStudentInfo(index, newStudent);
   }
 }
