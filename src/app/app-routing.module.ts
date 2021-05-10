@@ -1,23 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {StudentListComponent} from './student/student-list/student-list.component';
-import {CreateStudentComponent} from './student/create-student/create-student.component';
-import {UpdateStudentComponent} from './student/update-student/update-student.component';
 
 
 const routes: Routes = [
   {
     path: 'students',
-    component: StudentListComponent
-    // canActivate: => sử dụng cho cơ chế bảo mật của Angular [AuthGuard]
-  },
-  {
-    path: 'students/create',
-    component: CreateStudentComponent
-  },
-  {
-    path: 'students/edit/:id',
-    component: UpdateStudentComponent
+    loadChildren: () => import('./student/student.module').then(module => module.StudentModule)
   }
 ];
 

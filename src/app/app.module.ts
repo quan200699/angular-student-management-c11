@@ -1,36 +1,29 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { StudentListComponent } from './student/student-list/student-list.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { SearchStudentComponent } from './student/search-student/search-student.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatTableModule} from '@angular/material';
-import { CreateStudentComponent } from './student/create-student/create-student.component';
-import { UpdateStudentComponent } from './student/update-student/update-student.component';
 import {HttpClientModule} from '@angular/common/http';
+import {MaterialModule} from "./material/material.module";
 
 @NgModule({
   declarations: [
-    AppComponent,
-    StudentListComponent,
-    SearchStudentComponent,
-    CreateStudentComponent,
-    UpdateStudentComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatTableModule,
-    MatButtonModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
